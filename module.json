@@ -19,9 +19,11 @@
     }
   ],
   "relationships": {
-    "systems": [],
-    "requires": []
-  },
+    "recommended": [{
+      "id": "lib-wrapper",
+      "type": "module",
+      "manifest": "https://github.com/ruipin/fvtt-lib-wrapper/releases/latest/download/module.json"
+  }],
   "esmodules": [
     "scripts/easy-regions.js"
   ],
