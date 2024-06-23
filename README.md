@@ -8,7 +8,11 @@ It also works for other UUID fields which require a field of a supported type (M
 
 - Adds a drop-down menu to all UUIDFields (e.g. for selecting a Macro, Region, or Region Behavior).
 
+You can enter some of the text of the label (not the UUID) in order for the drop-down list to automatically shrink to just the entries containing the entered text.
+
 ![image](https://github.com/farling42/fvtt-easy-regions/blob/5d1c78cf532653e99a4853332fae5ea950b58bd8/images/easy-region-example.png)
+
+
 
 ## Installation
 
