@@ -1,5 +1,9 @@
 # Easy Regions
 
-## Teleport Token
+Easy Regions makes it easier to find the correct UUID when managing regions.
 
-- Provides a drop-down menu of teleport tokens in other scenes, avoiding the need to manually copy across the UUID from that other Teleport Token Behaviour.
+It also works for other UUID fields which require a field of a supported type (Macro, Region, RegionBehavior).
+
+## UUID references
+
+- Adds a drop-down menu to all UUIDFields (e.g. for selecting a Macro, Region, or Region Behavior).

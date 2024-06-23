@@ -12,6 +12,18 @@ import { libWrapper } from './lib/libwrapper-shim.js'
 
 const MODULE_NAME = "easy-regions";
 const REGION_DATALIST_NAME = "region-uuids";
+const SPACING = " \u{2794} ";
+
+
+function sorted(collection) {
+  return [...collection].sort((a,b) => a.name.compare(b.name));
+}
+function addOption(datalist, doc, label) {
+  const option = document.createElement('option');
+  option.value = doc.uuid;
+  option.label = label || doc.name;
+  datalist.append(option);
+}
 
 function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   let result = wrapper();
@@ -21,22 +33,30 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   const type = this.getAttribute("type");
   console.log(`${MODULE_NAME}.buildElements | ${type}`);
   if (type === 'Region') {
-    for (const scene of game.scenes) {
-      for (const region of scene.regions) {
+    for (const scene of sorted(game.scenes)) {
+      for (const region of sorted(scene.regions)) {
         if (!datalist) datalist = document.createElement('datalist');
-        const option = document.createElement('option');
-        option.value = region.uuid;
-        option.label = `${scene.name}: ${region.name}`;
-        datalist.append(option);
+        addOption(datalist, region, `${scene.name}${SPACING}${region.name}`);
       }
     }
   } else if (type === 'Macro') {
-    for (const macro of game.macros) {
+    for (const macro of sorted(game.macros)) {
       if (!datalist) datalist = document.createElement('datalist');
-      const option = document.createElement('option');
-      option.value = macro.uuid;
-      option.label = macro.name;
-      datalist.append(option);
+      addOption(datalist, macro);
+    }
+  } else if (type === 'Scene') {
+    for (const scene of sorted(game.scenes)) {
+      if (!datalist) datalist = document.createElement('datalist');
+      addOption(datalist, scene);
+    }
+  } else if (type === "RegionBehavior") {
+    for (const scene of sorted(game.scenes)) {
+      for (const region of sorted(scene.regions)) {
+        for (const behavior of sorted(region.behaviors)) {
+          if (!datalist) datalist = document.createElement('datalist');
+          addOption(datalist, behavior, `${scene.name}${SPACING}${region.name}${SPACING}${behavior.name}`);
+        }
+      }
     }
   }
 
