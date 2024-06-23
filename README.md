@@ -12,6 +12,6 @@ It also works for other UUID fields which require a field of a supported type (M
 
 ## Installation
 
-Until it is approved, use the following link to install the module: 
+Until it is approved, use the following manual manifest link to install the module: 
 
 https://github.com/farling42/fvtt-easy-regions/releases/latest/download/module.json
