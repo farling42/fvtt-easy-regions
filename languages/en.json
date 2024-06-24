@@ -1,3 +1,8 @@
 {
-    "MODULE.hello": "hello"
+  "easy-regions": {
+    "onlyNavigatableScenes": {
+      "Name": "Only Navigatable Scenes",
+      "Hint": "Only show UUIDs from Scenes for which navigation is enabled."
+    }
+  }
 }

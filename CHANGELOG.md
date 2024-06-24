@@ -1,3 +1,7 @@
+## 0.2.0
+
+- Add a module option to only display UUIDs for Scenes which have navigation enabled (appear in the list of scenes across the top of the canvas).
+
 ## 0.1.2
 
 - Fix issue with languages folder.
