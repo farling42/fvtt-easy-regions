@@ -142,7 +142,7 @@ Hooks.on("updateRegion", async (document, changed, options, userId) => {
       console.log(`${MODULE_NAME} - updateRegion: creating new texture`)
       region.iconTextureSrc = changedFlags.src;
       region.iconTexture = await loadTexture(changedFlags.src);
-      for (const node of region.icons)
+      for (const node of region.icons.children)
         node.texture = region.iconTexture;
     }
   }
