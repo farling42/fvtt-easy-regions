@@ -5,10 +5,19 @@
       "Hint": "Only show UUIDs from Scenes for which navigation is enabled."
     },
     "regionConfig": {
-      "icon": {
-        "label": "Region Icon",
+      "src": {
+        "label": "Icon Image",
         "hint": "Select an icon to display at the centre of each region polygon",
         "placeholder": "Path to Icon"
+      },
+      "tint": {
+        "label": "Icon Tint",
+        "hint": "The colour of the icon"
+      },
+      "size": {
+        "label": "Icon Size",
+        "hint": "The size of the icon (minimum 32)",
+        "validation": "must be an integer greater than 32"
       }
     }
   }
