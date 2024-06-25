@@ -3,6 +3,13 @@
     "onlyNavigatableScenes": {
       "Name": "Only Navigatable Scenes",
       "Hint": "Only show UUIDs from Scenes for which navigation is enabled."
+    },
+    "regionConfig": {
+      "icon": {
+        "label": "Region Icon",
+        "hint": "Select an icon to display at the centre of each region polygon",
+        "placeholder": "Path to Icon"
+      }
     }
   }
 }

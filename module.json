@@ -28,7 +28,8 @@
     ]
   },
   "esmodules": [
-    "scripts/easy-regions.js"
+    "scripts/easy-regions.js",
+    "scripts/region-icons.js"
   ],
   "scripts": [
     "scripts/lib/lib.js"
