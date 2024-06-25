@@ -52,7 +52,6 @@ function iconField() {
   return icon_field;
 }
 
-
 Hooks.on("renderRegionConfig", (doc, html) => {
   if (!game.settings.get(MODULE_NAME, SETTING_REGION_ICONS)) return;
 
@@ -65,10 +64,13 @@ Hooks.on("renderRegionConfig", (doc, html) => {
     value: flags?.src,
     localize: true,
   }));
-  group.append(fields.tint.toFormGroup({ localize: true }, {
-    value: flags?.tint,
+  const tint_group = fields.tint.toFormGroup({ localize: true }, {
+    //value: flags?.tint,  // This won't set the correct value from renderRegionConfig hook 
     localize: true,
-  }));
+  });
+  if (flags?.tint) tint_group.querySelector('color-picker')?._setValue(flags?.tint)
+  group.append(tint_group);
+
   group.append(fields.size.toFormGroup({ localize: true }, {
     value: flags?.size,
     localize: true,
