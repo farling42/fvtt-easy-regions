@@ -10,13 +10,13 @@ It also works for other UUID fields which require a field of a supported type (M
 
 You can enter some of the text of the label (not the UUID) in order for the drop-down list to automatically shrink to just the entries containing the entered text.
 
-![image](https://github.com/farling42/fvtt-easy-regions/blob/5d1c78cf532653e99a4853332fae5ea950b58bd8/images/easy-region-example.png)
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/easy-region-example.png)
 
 ## Region Icons
 
 - Define an Icon and specify its colour and size, to be displayed in the centre of each polygon of a region.
 
-![image](https://github.com/farling42/fvtt-easy-regions/blob/5d1c78cf532653e99a4853332fae5ea950b58bd8/images/region-icons.webp)
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-icons.webp)
 
 ## Module Options
 
