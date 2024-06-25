@@ -4,7 +4,11 @@
 // Draw the region in the centre of each of the region's polygons.
 //
 
-const MODULE_NAME = "easy-regions";
+import { 
+  MODULE_NAME, 
+  SETTING_REGION_ICONS 
+} from './region-constants.js';
+
 const IMG_FIELD = "flags.easy-regions.img";
 
 let icon_field;
@@ -50,6 +54,8 @@ function iconField() {
 
 
 Hooks.on("renderRegionConfig", (doc, html) => {
+  if (!game.settings.get(MODULE_NAME, SETTING_REGION_ICONS)) return;
+
   // Create the FormGroup to add to the form (specific)
   const flags = doc.document.flags[MODULE_NAME];
   const fields = iconField().fields;
@@ -74,6 +80,8 @@ Hooks.on("renderRegionConfig", (doc, html) => {
 
 
 Hooks.on("refreshRegion", async (region, options) => {
+  if (!game.settings.get(MODULE_NAME, SETTING_REGION_ICONS)) return;
+
   if (!options.refreshState) return;
 
   const texture = region.document.flags[MODULE_NAME]?.src;
@@ -82,7 +90,7 @@ Hooks.on("refreshRegion", async (region, options) => {
   // All other changes made during _onUpdate.
   if (region.icons || !texture) return;
 
-  console.log(`${MODULE_NAME} - refreshRegion: creating initial Icons:`, { region, options })
+  if (CONFIG.debug[MODULE_NAME]) console.log(`${MODULE_NAME} - refreshRegion: creating initial Icons:`, { region, options })
   const iconTint = region.document.flags[MODULE_NAME]?.tint ?? 0xFFFFFF;
   const iconSize = region.document.flags[MODULE_NAME]?.size ?? 32;
 
@@ -105,7 +113,9 @@ Hooks.on("refreshRegion", async (region, options) => {
 
 
 Hooks.on("updateRegion", async (document, changed, options, userId) => {
-  console.log(`${MODULE_NAME} - updateRegion`, { document, changed, options, userId} )
+  if (!game.settings.get(MODULE_NAME, SETTING_REGION_ICONS)) return;
+
+  if (CONFIG.debug[MODULE_NAME]) console.log(`${MODULE_NAME} - updateRegion`, { document, changed, options, userId} )
   const region = document.object;
 
   const regionFlags = document.flags[MODULE_NAME];
@@ -117,7 +127,7 @@ Hooks.on("updateRegion", async (document, changed, options, userId) => {
   const update_size = (changedFlags && "size" in changedFlags);
   const update_border = ("shapes" in changed);
 
-  console.log(`${MODULE_NAME} - updateRegion`, { update_texture, update_tint, update_size, update_border })
+  if (CONFIG.debug[MODULE_NAME]) console.log(`${MODULE_NAME} - updateRegion`, { update_texture, update_tint, update_size, update_border })
 
   if (update_texture) {
     if (region.textureSrc) {
@@ -139,7 +149,7 @@ Hooks.on("updateRegion", async (document, changed, options, userId) => {
   if (update_border) {
     const oldCount = region.icons.children.length;
     const newCount = region.polygonTree.children.length;
-    console.log(`${MODULE_NAME} - updateRegion: changing border length from ${oldCount} to ${newCount}`)
+    if (CONFIG.debug[MODULE_NAME]) console.log(`${MODULE_NAME} - updateRegion: changing border length from ${oldCount} to ${newCount}`)
     for (let i = oldCount; i > newCount; i--)
       region.icons.children[i - 1].destroy({ children: true })
     for (let i = oldCount; i < newCount; i++) {
@@ -151,7 +161,7 @@ Hooks.on("updateRegion", async (document, changed, options, userId) => {
     }
   }
   if (update_tint || update_size || update_border) {
-    console.log(`${MODULE_NAME} - updateRegion: updating each icon`)
+    if (CONFIG.debug[MODULE_NAME]) console.log(`${MODULE_NAME} - updateRegion: updating each icon`)
     let iconCount = 0;
     for (const node of region.polygonTree) {
       const icon = region.icons.children[iconCount++];

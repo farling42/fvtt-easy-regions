@@ -4,6 +4,10 @@
       "Name": "Only Navigatable Scenes",
       "Hint": "Only show UUIDs from Scenes for which navigation is enabled."
     },
+    "regionIcons": {
+      "Name": "Add Icons to Reginons",
+      "Hint": "Adds fields to a Region definition to specify an optional icon (with tint and size)"
+    },
     "regionConfig": {
       "src": {
         "label": "Icon Image",

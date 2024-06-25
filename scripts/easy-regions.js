@@ -10,11 +10,13 @@
 
 import { libWrapper } from './lib/libwrapper-shim.js'
 
-const MODULE_NAME = "easy-regions";
+import { 
+  MODULE_NAME, 
+  SETTING_ONLY_NAV_SCENES 
+} from './region-constants.js';
+
 const REGION_DATALIST_NAME = "region-uuids";
 const SPACING = " \u{2794} ";
-const SETTING_ONLY_NAV_SCENES = "onlyNavigatableScenes";
-
 
 function sorted(collection) {
   return [...collection].sort((a, b) => a.name.compare(b.name));
@@ -82,13 +84,4 @@ Hooks.once('ready', async function () {
     my_HTMLDocumentTagsElement_buildElements,
     libWrapper.WRAPPER);
   console.log(`${MODULE_NAME} | hooks installed`)
-
-  game.settings.register(MODULE_NAME, SETTING_ONLY_NAV_SCENES, {
-    name: game.i18n.localize(`${MODULE_NAME}.${SETTING_ONLY_NAV_SCENES}.Name`),
-    hint: game.i18n.localize(`${MODULE_NAME}.${SETTING_ONLY_NAV_SCENES}.Hint`),
-    scope: "world",
-    type: Boolean,
-    default: false,
-    config: true
-  });
 })

@@ -12,6 +12,12 @@ You can enter some of the text of the label (not the UUID) in order for the drop
 
 ![image](https://github.com/farling42/fvtt-easy-regions/blob/5d1c78cf532653e99a4853332fae5ea950b58bd8/images/easy-region-example.png)
 
+## Region Icons
+
+- Define an Icon and specify its colour and size, to be displayed in the centre of each polygon of a region.
+
+![image](https://github.com/farling42/fvtt-easy-regions/blob/5d1c78cf532653e99a4853332fae5ea950b58bd8/images/region-icons.webp)
+
 ## Module Options
 
 There is a module option to restrict the list of UUIDs for Scenes, Regions and Region Behaviors to only those in Scenes which have Navigation enabled (and therefore appear in the list across the top of the canvas). _This should help alleviate the list being too long in worlds with many scenes._
