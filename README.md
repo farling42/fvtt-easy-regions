@@ -1,3 +1,10 @@
+[![ko-fi](https://img.shields.io/badge/Ko--Fi-farling-success)](https://ko-fi.com/farling)
+[![patreon](https://img.shields.io/badge/Patreon-amusingtime-success)](https://patreon.com/amusingtime)
+[![paypal](https://img.shields.io/badge/Paypal-farling-success)](https://paypal.me/farling)
+![GitHub License](https://img.shields.io/github/license/farling42/fvtt-easy-regions)
+![Foundry Info](https://img.shields.io/badge/Foundry-v12-informational)
+![Latest Release Download Count](https://img.shields.io/github/downloads/farling42/fvtt-easy-regions/latest/module.zip)
+
 # Easy Regions
 
 Easy Regions makes it easier to find the correct UUID when managing regions.
