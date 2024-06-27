@@ -12,8 +12,10 @@ import { libWrapper } from './lib/libwrapper-shim.js'
 
 import { 
   MODULE_NAME, 
-  SETTING_ONLY_NAV_SCENES 
-} from './region-constants.js';
+  MODULE_TITLE,
+  SETTING_ONLY_NAV_SCENES,
+  easyDebug, easyLog
+} from './region-settings.js';
 
 const REGION_DATALIST_NAME = "region-uuids";
 const SPACING = " \u{2794} ";
@@ -35,7 +37,7 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   let only_nav_scenes = game.settings.get(MODULE_NAME, SETTING_ONLY_NAV_SCENES);
 
   const type = this.getAttribute("type");
-  console.log(`${MODULE_NAME}.buildElements | ${type}`);
+  easyDebug(`buildElements: ${type}`);
   if (type === 'Region') {
     for (const scene of sorted(game.scenes)) {
       if (!only_nav_scenes || scene.navigation)
@@ -83,5 +85,5 @@ Hooks.once('ready', async function () {
     'foundry.applications.elements.HTMLDocumentTagsElement.prototype._buildElements',
     my_HTMLDocumentTagsElement_buildElements,
     libWrapper.WRAPPER);
-  console.log(`${MODULE_NAME} | hooks installed`)
+  easyLog(`HTMLDocumentTagsElement._buildElements hook installed`);
 })

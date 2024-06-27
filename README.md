@@ -27,3 +27,9 @@ There is a module option to disable icons if they are not required.
 The module can be found from Foundry's module settings page. Alternatively the latest version can be installed using the following link:
 
 https://github.com/farling42/fvtt-easy-regions/releases/latest/download/module.json
+
+## Debugging
+
+Additional output can be displayed in the Browser's console by enabling the Verbose view of messages, and entering the following command into the browser console:
+
+`CONFIG.debug["easy-regions"]=true`

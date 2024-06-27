@@ -1,8 +1,9 @@
-import {
-  MODULE_NAME,
-  SETTING_ONLY_NAV_SCENES,
-  SETTING_REGION_ICONS
-} from './region-constants.js';
+export const MODULE_NAME = "easy-regions";
+export const MODULE_TITLE = "Easy Regions";
+
+export const SETTING_ONLY_NAV_SCENES = "onlyNavigatableScenes";
+
+export const SETTING_REGION_ICONS = "regionIcons";
 
 Hooks.once('ready', async function () {
 
@@ -25,4 +26,14 @@ Hooks.once('ready', async function () {
     requiresReload: true
   });
 
+  easyLog("Game Settings Registered");
 })
+
+
+export function easyDebug(msg, ...args) {
+  if (CONFIG.debug[MODULE_NAME]) console.debug(`${MODULE_TITLE} | ${msg} `, ...args)
+}
+
+export function easyLog(msg, ...args) {
+  console.log(`${MODULE_TITLE} | ${msg} `, ...args)
+}
