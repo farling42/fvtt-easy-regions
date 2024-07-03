@@ -59,7 +59,6 @@ function my_render_region_config(doc, html) {
   const fields = iconField().fields;
   const group = document.createElement("fieldset");
   group.append(fields.src.toFormGroup({ localize: true }, {
-    placeholder: `${MODULE_NAME}.regionConfig.icon.placeholder`,
     value: flags?.src,
     localize: true,
   }));

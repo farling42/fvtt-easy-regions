@@ -1,3 +1,10 @@
+# CHANGELOG
+
+## 0.4.1
+
+- Remove explicit placeholder text for the icon's file path field.
+- Set banner tags in README.md
+
 ## 0.4.0
 
 - Make startup more reliable, so that region-icons doesn't generate an error.

@@ -11,8 +11,7 @@
     "regionConfig": {
       "src": {
         "label": "Icon Image",
-        "hint": "Select an icon to display at the centre of each region polygon",
-        "placeholder": "Path to Icon"
+        "hint": "Select an icon to display at the centre of each region polygon"
       },
       "tint": {
         "label": "Icon Tint",
