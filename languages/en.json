@@ -12,6 +12,18 @@
       "Name": "Highlight regions with no behaviors",
       "Hint": "Changes the colour of the Config icon in the Region list when a region has no behaviors defined"
     },
+    "autoLinkTeleport": {
+      "Name": "Auto-link Teleport Regions",
+      "Hint": "Automatically link a Teleport behavior to a region with the complementary Region name"
+    },
+    "teleportPattern1": {
+      "Name": "Teleport Region Pattern Name 1",
+      "Hint": "Specify the pattern of the region name for automatic teleport linking, of a pattern similar to '$1 up to $2' where $1 and $2 can be any text"
+    },
+    "teleportPattern2": {
+      "Name": "Teleport Region Pattern Name 2",
+      "Hint": "Second pattern for the region name, in both cases '$1' should appear before '$2'"
+    },
     "regionConfig": {
       "src": {
         "label": "Icon Image",

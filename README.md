@@ -38,6 +38,19 @@ There is a module option to disable icons if they are not required.
 
 There is a module option to disable this highlighting if it is not required.
 
+## Automatic Linking of Teleport Regions, based on Region name
+
+By setting up the pattern of your region names in the module settings, on creating a Teleport Behavior in a region then the behavior's UUID field will be automatically populated to the region that has a matching name - and that other region will have its Teleport Behavior set to point to this region.
+
+For example, in a region called "A25 down to B05", creating a Teleport Behavior will automatically linked that behavior to a region with a name of "B05 up to A25". A Teleport Behavior will be created on the other region if it doesn't already exist.
+
+A simple workflow:
+
+- On first scene, create a region called "A01 down to B02"
+- On second scene, create a region called "B02 up to A01", then create a Teleport Behavior in that region
+- _the teleport will be automatically linked to the region on the first scene_
+
+
 ## Installation
 
 The module can be found from Foundry's module settings page. Alternatively the latest version can be installed using the following link:

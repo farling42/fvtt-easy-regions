@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.6.0
+
+- Allow automatic linking of Teleport Behaviors, based on the complementary matching names between the regions to be linked.
+
 ## 0.5.0
 
 - Add an option (default enabled) to highlight regions which have no behaviors configured, by changing the colour of the config button for that region.
