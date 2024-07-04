@@ -13,7 +13,7 @@ function getAllRegions(regexp) {
   const only_nav_scenes = game.settings.get(MODULE_NAME, SETTING_ONLY_NAV_SCENES);
   const regions = [];
   for (const scene of game.scenes) {
-    if (only_nav_scenes || scene.navigation) {
+    if (!only_nav_scenes || scene.navigation) {
       for (const region of scene.regions) {
         if (region.name.match(regexp)) {
           regions.push(region);
