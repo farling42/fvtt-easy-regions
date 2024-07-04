@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.6.1
+
+- Fix a logic error when checking the "only navigation scenes" for automatic linking of teleport regions.
+
 ## 0.6.0
 
 - Allow automatic linking of Teleport Behaviors, based on the complementary matching names between the regions to be linked.
