@@ -30,6 +30,14 @@ There is a module option to restrict the list of UUIDs for Scenes, Regions and R
 
 There is a module option to disable icons if they are not required.
 
+## Highlight Regions with no Behaviors in Region List
+
+- Changes the colour of the Config button in the Region list if the region has no behaviors configured on it.
+
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/easy-region-no-behaviors.webp)
+
+There is a module option to disable this highlighting if it is not required.
+
 ## Installation
 
 The module can be found from Foundry's module settings page. Alternatively the latest version can be installed using the following link:

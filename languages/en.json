@@ -5,8 +5,12 @@
       "Hint": "Only show UUIDs from Scenes for which navigation is enabled."
     },
     "regionIcons": {
-      "Name": "Add Icons to Reginons",
+      "Name": "Add Icons to Regions",
       "Hint": "Adds fields to a Region definition to specify an optional icon (with tint and size)"
+    },
+    "legendShowNoBehavior": {
+      "Name": "Highlight regions with no behaviors",
+      "Hint": "Changes the colour of the Config icon in the Region list when a region has no behaviors defined"
     },
     "regionConfig": {
       "src": {

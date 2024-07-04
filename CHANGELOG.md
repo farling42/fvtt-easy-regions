@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.5.0
+
+- Add an option (default enabled) to highlight regions which have no behaviors configured, by changing the colour of the config button for that region.
+
 ## 0.4.1
 
 - Remove explicit placeholder text for the icon's file path field.

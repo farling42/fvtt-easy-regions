@@ -30,10 +30,11 @@
   "esmodules": [
     "scripts/region-settings.js",
     "scripts/easy-regions.js",
+    "scripts/region-panel.js",
     "scripts/region-icons.js"
   ],
   "styles": [
-    "styles/module.css"
+    "styles/easy-regions.css"
   ],
   "languages": [
     {
