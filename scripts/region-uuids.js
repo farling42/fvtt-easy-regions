@@ -44,11 +44,13 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
       break;
 
     case "Macro":
-      sorted(game.macros).forEach(macro => addOption(macro));
+      sorted(game.macros).forEach(macro =>
+        addOption(macro));
       break;
 
     case "Scene":
-      scenes().forEach(scene => addOption(scene));
+      scenes().forEach(scene =>
+        addOption(scene));
       break;
 
     case "RegionBehavior":
