@@ -18,7 +18,7 @@
     },
     "autoLinkTeleport": {
       "Name": "Auto-link Teleport Regions",
-      "Hint": "Automatically link a Teleport behavior to a region with the complementary Region name"
+      "Hint": "Automatically link a Teleport behavior to a region with the complementary/identical Region name"
     },
     "teleportPattern1": {
       "Name": "Teleport Region Pattern Name 1",
@@ -27,6 +27,10 @@
     "teleportPattern2": {
       "Name": "Teleport Region Pattern Name 2",
       "Hint": "Second pattern for the region name, in both cases '$1' should appear before '$2'"
+    },
+    "teleportSameName": {
+      "Name": "Allow Teleport Link to Same Region Name",
+      "Hint": "When looking for a Region to Teleport to, link if the Region name is identical (in preference to the following pattern matching)"
     },
     "regionConfig": {
       "src": {

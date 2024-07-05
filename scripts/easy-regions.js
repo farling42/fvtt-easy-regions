@@ -75,6 +75,15 @@ function init_module() {
     config: true
   });
 
+  game.settings.register(MOD.id, SETTING_TELEPORT_SAME_NAME, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_SAME_NAME}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_SAME_NAME}.Hint`),
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
   game.settings.register(MOD.id, SETTING_TELEPORT_PATTERN1, {
     name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PATTERN1}.Name`),
     hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PATTERN1}.Hint`),
@@ -87,15 +96,6 @@ function init_module() {
   game.settings.register(MOD.id, SETTING_TELEPORT_PATTERN2, {
     name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PATTERN2}.Name`),
     hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PATTERN2}.Hint`),
-    scope: "world",
-    type: String,
-    default: "$1 down to $2",
-    config: true
-  });
-
-  game.settings.register(MOD.id, SETTING_TELEPORT_SAME_NAME, {
-    name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_SAME_NAME}.Name`),
-    hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_SAME_NAME}.Hint`),
     scope: "world",
     type: String,
     default: "$1 down to $2",

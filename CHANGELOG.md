@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## NEXT
+## 0.7.0
 
 - Change of arrow symbol to rightwards double-arrow instead of wide-headed rightwards arrow.
 - Add module configuration option to disable UUID dropdown list (but why would you want this)?
