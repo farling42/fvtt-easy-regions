@@ -1,5 +1,9 @@
 {
   "easy-regions": {
+    "dropdownUUIDs": {
+      "Name": "Provide drop-list in UUID fields",
+      "Hint": "Adds a drop-down list showing all available UUIDs and a label showing their (nested) name of the relevant type (Region, Behavior, Macro, Scene) in UUID fields"
+    },
     "onlyNavigatableScenes": {
       "Name": "Only Navigatable Scenes",
       "Hint": "Only show UUIDs from Scenes for which navigation is enabled."

@@ -1,5 +1,6 @@
 export let MOD;
 
+export const SETTING_DROPDOWN_UUID = "dropdownUUIDs";
 export const SETTING_ONLY_NAV_SCENES = "onlyNavigatableScenes";
 export const SETTING_REGION_ICONS = "regionIcons";
 export const SETTING_LEGEND_BEHAVIOR = "legendShowNoBehavior";
@@ -12,11 +13,20 @@ import { initRegionLinkTeleport } from './region-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
 
-Hooks.once('ready', async function () {
+function init_module() {
 
   MOD = game.modules.get("easy-regions");
 
   console.group(`${MOD.title} | startup`);
+
+  game.settings.register(MOD.id, SETTING_DROPDOWN_UUID, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_DROPDOWN_UUID}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_DROPDOWN_UUID}.Hint`),
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
 
   game.settings.register(MOD.id, SETTING_ONLY_NAV_SCENES, {
     name: game.i18n.localize(`${MOD.id}.${SETTING_ONLY_NAV_SCENES}.Name`),
@@ -76,9 +86,11 @@ Hooks.once('ready', async function () {
 
   console.log(`${MOD.title} | Game Settings Registered`);
 
-  initRegionUUIDField();
+  if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID))     initRegionUUIDField();
   if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK)) initRegionLinkTeleport();
-  if (game.settings.get(MOD.id, SETTING_REGION_ICONS)) initRegionIcons();
-  if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();  
+  if (game.settings.get(MOD.id, SETTING_REGION_ICONS))      initRegionIcons();
+  if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR))   initRegionPanel();  
   console.groupEnd();
-})
+}
+
+Hooks.once('ready', init_module);
