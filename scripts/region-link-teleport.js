@@ -7,22 +7,6 @@ import {
 
 const BEHAVIOUR_TYPE = "teleportToken";
 
-function getAllRegions(regexp) {
-  const only_nav_scenes = game.settings.get(MOD.id, SETTING_ONLY_NAV_SCENES);
-  const regions = [];
-  for (const scene of game.scenes) {
-    if (!only_nav_scenes || scene.navigation) {
-      for (const region of scene.regions) {
-        if (region.name.match(regexp)) {
-          regions.push(region);
-        }
-      }
-    }
-  }
-  return regions;
-}
-
-
 function findOtherRegion(name) {
 
   const pattern1 = game.settings.get(MOD.id, SETTING_TELEPORT_PATTERN1);
