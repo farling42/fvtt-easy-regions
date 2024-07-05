@@ -50,7 +50,6 @@ A simple workflow:
 - On second scene, create a region called "B02 up to A01", then create a Teleport Behavior in that region
 - _the teleport will be automatically linked to the region on the first scene_
 
-
 ## Installation
 
 The module can be found from Foundry's module settings page. Alternatively the latest version can be installed using the following link:

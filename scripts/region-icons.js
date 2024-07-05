@@ -4,13 +4,7 @@
 // Draw the region in the centre of each of the region's polygons.
 //
 
-import { 
-  MODULE_NAME, 
-  SETTING_REGION_ICONS,
-  easyDebug, easyLog
-} from './region-settings.js';
-
-const IMG_FIELD = "flags.easy-regions.img";
+import { MOD } from './region-settings.js';
 
 let icon_field;
 
@@ -18,19 +12,20 @@ function iconField() {
   if (icon_field) return icon_field;
 
   const fields = foundry.data.fields;
+  const PREFIX = `${MOD.id}.regionConfig`;
   // Create a fake DataField for the image (generic)
 
   icon_field = new fields.SchemaField({
     src: new fields.FilePathField({
       categories: ["IMAGE"],
-      label: `${MODULE_NAME}.regionConfig.src.label`,
-      hint: `${MODULE_NAME}.regionConfig.src.hint`
+      label: `${PREFIX}.src.label`,
+      hint: `${PREFIX}.src.hint`
     }),
     tint: new fields.ColorField({
       nullable: false,
       initial: "#ffffff",
-      label: `${MODULE_NAME}.regionConfig.tint.label`,
-      hint: `${MODULE_NAME}.regionConfig.tint.hint`
+      label: `${PREFIX}.tint.label`,
+      hint: `${PREFIX}.tint.hint`
     }),
     size: new fields.NumberField({
       // Same settings as per BaseNote
@@ -39,23 +34,22 @@ function iconField() {
       integer: true,
       min: 32,
       initial: 40,
-      label: `${MODULE_NAME}.regionConfig.size.label`,
-      hint: `${MODULE_NAME}.regionConfig.size.hint`,
-      validationError: `${MODULE_NAME}.regionConfig.size.validation`,
-      label: "NOTE.IconSize"
+      label: `${PREFIX}.size.label`,
+      hint: `${PREFIX}.size.hint`,
+      validationError: `${PREFIX}.size.validation`
     }),
   }, {
     // Options
   }, {
     // Context
-    name: `flags.${MODULE_NAME}`
+    name: `flags.${MOD.id}`
   })
   return icon_field;
 }
 
-function my_render_region_config(doc, html) {
+function icon_renderRegionConfig(doc, html) {
   // Create the FormGroup to add to the form (specific)
-  const flags = doc.document.flags[MODULE_NAME];
+  const flags = doc.document.flags[MOD.id];
   const fields = iconField().fields;
   const group = document.createElement("fieldset");
   group.append(fields.src.toFormGroup({ localize: true }, {
@@ -79,19 +73,20 @@ function my_render_region_config(doc, html) {
 }
 
 
-async function my_refresh_region (region, options) {
+async function icon_refreshRegion (region, options) {
 
   if (!options.refreshState) return;
 
-  const texture = region.document.flags[MODULE_NAME]?.src;
+  const flags = region.document.flags[MOD.id];
+  const texture = flags?.src;
 
   // Initial creation of required icons.
   // All other changes made during _onUpdate.
   if (region.icons || !texture) return;
 
-  easyDebug(`refreshRegion: creating initial Icons:`, { region, options })
-  const iconTint = region.document.flags[MODULE_NAME]?.tint ?? 0xFFFFFF;
-  const iconSize = region.document.flags[MODULE_NAME]?.size ?? 32;
+  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | refreshRegion: creating initial Icons:`, { region, options })
+  const iconTint = flags?.tint ?? 0xFFFFFF;
+  const iconSize = flags?.size ?? 32;
 
   region.icons = region.addChild(new PIXI.Graphics());
   region.icons.eventMode = "none";
@@ -111,31 +106,29 @@ async function my_refresh_region (region, options) {
 }
 
 
-async function my_update_region(document, changed, options, userId) {
+async function icon_updateRegion(document, changed, options, userId) {
 
-  easyDebug(`updateRegion: `, { document, changed, options, userId} )
+  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: `, { document, changed, options, userId} )
   const region = document.object;
 
-  const regionFlags = document.flags[MODULE_NAME];
+  const regionFlags = document.flags[MOD.id];
   if (!regionFlags || !region.icons) return;
 
-  const changedFlags = changed.flags?.[MODULE_NAME];
+  const changedFlags = changed.flags?.[MOD.id];
   const update_texture = (changedFlags && "src" in changedFlags);
   const update_tint = (changedFlags && "tint" in changedFlags);
   const update_size = (changedFlags && "size" in changedFlags);
   const update_border = ("shapes" in changed);
 
-  easyDebug(`updateRegion: `, { update_texture, update_tint, update_size, update_border })
-
   if (update_texture) {
     if (region.textureSrc) {
-      easyDebug(`updateRegion: deleting old texture`)
+      if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: deleting old texture`)
       region.iconTextureSrc = null;
       region.iconTexture.destroy();
       region.iconTexture = null;
     }
     if (changedFlags.src) {
-      easyDebug(`updateRegion: creating new texture`)
+      if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: creating new texture`)
       region.iconTextureSrc = changedFlags.src;
       region.iconTexture = await loadTexture(changedFlags.src);
       for (const node of region.icons.children)
@@ -147,7 +140,7 @@ async function my_update_region(document, changed, options, userId) {
   if (update_border) {
     const oldCount = region.icons.children.length;
     const newCount = region.polygonTree.children.length;
-    easyDebug(`updateRegion: changing border length from ${oldCount} to ${newCount}`)
+    if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: changing border length from ${oldCount} to ${newCount}`)
     for (let i = oldCount; i > newCount; i--)
       region.icons.children[i - 1].destroy({ children: true })
     for (let i = oldCount; i < newCount; i++) {
@@ -159,7 +152,7 @@ async function my_update_region(document, changed, options, userId) {
     }
   }
   if (update_tint || update_size || update_border) {
-    easyDebug(`updateRegion: updating each icon`)
+    if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: updating each icon`)
     let iconCount = 0;
     for (const node of region.polygonTree) {
       const icon = region.icons.children[iconCount++];
@@ -176,8 +169,11 @@ async function my_update_region(document, changed, options, userId) {
 
 
 export function initRegionIcons() {
-  Hooks.on("renderRegionConfig", my_render_region_config);
-  Hooks.on("refreshRegion", my_refresh_region);
-  Hooks.on("updateRegion", my_update_region);
-  easyLog("`Region Icons Initialised");
+  console.log(`${MOD.title} | Region Icons Initialising`);
+
+  Hooks.on("renderRegionConfig", icon_renderRegionConfig);
+  Hooks.on("refreshRegion", icon_refreshRegion);
+  Hooks.on("updateRegion", icon_updateRegion);
+
+  console.log(`${MOD.title} | Region Icons Initialised`);
 }

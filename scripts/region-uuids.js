@@ -10,12 +10,7 @@
 
 import { libWrapper } from './lib/libwrapper-shim.js'
 
-import { 
-  MODULE_NAME, 
-  MODULE_TITLE,
-  SETTING_ONLY_NAV_SCENES,
-  easyDebug, easyLog
-} from './region-settings.js';
+import { MOD, SETTING_ONLY_NAV_SCENES } from './region-settings.js';
 
 const REGION_DATALIST_NAME = "region-uuids";
 const SPACING = " \u{2794} ";
@@ -34,10 +29,10 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   let result = wrapper();
 
   let datalist;
-  let only_nav_scenes = game.settings.get(MODULE_NAME, SETTING_ONLY_NAV_SCENES);
+  let only_nav_scenes = game.settings.get(MOD.id, SETTING_ONLY_NAV_SCENES);
 
   const type = this.getAttribute("type");
-  easyDebug(`buildElements: ${type}`);
+  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | buildElements: ${type}`);
   if (type === 'Region') {
     for (const scene of sorted(game.scenes)) {
       if (!only_nav_scenes || scene.navigation)
@@ -82,9 +77,9 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
 
 
 export function initRegionUUIDField() {
-  libWrapper.register(MODULE_NAME,
+  libWrapper.register(MOD.id,
     'foundry.applications.elements.HTMLDocumentTagsElement.prototype._buildElements',
     my_HTMLDocumentTagsElement_buildElements,
     libWrapper.WRAPPER);
-  easyLog(`HTMLDocumentTagsElement._buildElements hook installed`);
+  console.log(`${MOD.title} | HTMLDocumentTagsElement._buildElements hook installed`);
 }
