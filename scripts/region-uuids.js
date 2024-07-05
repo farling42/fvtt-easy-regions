@@ -66,7 +66,7 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   }
 
   if (datalist) {
-    const [tags, input, button] = result;
+    const input = result.find(node => node.nodeName === "INPUT");
     datalist.id = REGION_DATALIST_NAME;
     input.append(datalist);
     input.setAttribute("list", REGION_DATALIST_NAME);
