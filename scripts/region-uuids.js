@@ -72,11 +72,13 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   return result;
 }
 
-
 export function initRegionUUIDField() {
+  console.log(`${MOD.title} | HTMLDocumentTagsElement._buildElements wrapper installing`);
+
   libWrapper.register(MOD.id,
     'foundry.applications.elements.HTMLDocumentTagsElement.prototype._buildElements',
     my_HTMLDocumentTagsElement_buildElements,
     libWrapper.WRAPPER);
-  console.log(`${MOD.title} | HTMLDocumentTagsElement._buildElements hook installed`);
+
+  console.log(`${MOD.title} | HTMLDocumentTagsElement._buildElements wrapper installed`);
 }

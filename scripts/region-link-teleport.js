@@ -39,28 +39,32 @@ function findOtherRegion(name) {
     compare(pattern2_regexp, pattern1);
 }
 
+async function my_createRegionBehavior(app, context, id) {
+  if (app.type !== BEHAVIOUR_TYPE) return;
+
+  const thisRegion = app.region;
+  const otherRegion = findOtherRegion(thisRegion.name);
+  if (!otherRegion) return;
+
+  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | createRegionBehavior: found other region '${otherRegion.name}'`)
+
+  let otherBehavior = otherRegion.behaviors.find(b => b.type === BEHAVIOUR_TYPE);
+  if (!otherBehavior) {
+    if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | Creating new Teleport behavior on region '${otherRegion.name}' to link to '${thisRegion.name}'`)
+    // Creation of the other behavior will trigger this hook again,
+    // and that second trigger will link the two regions together.
+    return CONFIG.RegionBehavior.documentClass.create({ type: BEHAVIOUR_TYPE }, { parent: otherRegion });
+  }
+
+  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | Updating Teleport behavior on regions '${otherRegion.name}' and '${thisRegion.name}'`)
+  app.update({ "system.destination": otherRegion.uuid })
+  otherBehavior.update({ "system.destination": thisRegion.uuid })
+}
 
 export function initRegionLinkTeleport() {
+  console.log(`${MOD.title} | Teleport Linking Initialising`);
 
-  Hooks.on('createRegionBehavior', async function (app, context, id) {
-    if (app.type !== BEHAVIOUR_TYPE) return;
+  Hooks.on('createRegionBehavior', my_createRegionBehavior);
 
-    const thisRegion = app.region;
-    const otherRegion = findOtherRegion(thisRegion.name);
-    if (!otherRegion) return;
-
-    if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | createRegionBehavior: found other region '${otherRegion.name}'`)
-
-    let otherBehavior = otherRegion.behaviors.find(b => b.type === BEHAVIOUR_TYPE);
-    if (!otherBehavior) {
-      if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | Creating new Teleport behavior on region '${otherRegion.name}' to link to '${thisRegion.name}'`)
-      // Creation of the other behavior will trigger this hook again,
-      // and that second trigger will link the two regions together.
-      return CONFIG.RegionBehavior.documentClass.create({ type: BEHAVIOUR_TYPE }, { parent: otherRegion });
-    }
-
-    if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | Updating Teleport behavior on regions '${otherRegion.name}' and '${thisRegion.name}'`)
-    app.update({ "system.destination": otherRegion.uuid })
-    otherBehavior.update({ "system.destination": thisRegion.uuid })
-  })
+  console.log(`${MOD.title} | Teleport Linking Initialised`);
 }
