@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.7.1
+
+- Prevent error when updating Region icons on non-displayed scenes (e.g. via a global macro)
+
 ## 0.7.0
 
 - Change of arrow symbol to rightwards double-arrow instead of wide-headed rightwards arrow.

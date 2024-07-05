@@ -82,7 +82,7 @@ async function icon_refreshRegion (region, options) {
 
   // Initial creation of required icons.
   // All other changes made during _onUpdate.
-  if (region.icons || !texture) return;
+  if (region?.icons || !texture) return;
 
   if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | refreshRegion: creating initial Icons:`, { region, options })
   const iconTint = flags?.tint ?? 0xFFFFFF;
@@ -112,7 +112,7 @@ async function icon_updateRegion(document, changed, options, userId) {
   const region = document.object;
 
   const regionFlags = document.flags[MOD.id];
-  if (!regionFlags || !region.icons) return;
+  if (!regionFlags || !region?.icons) return;
 
   const changedFlags = changed.flags?.[MOD.id];
   const update_texture = (changedFlags && "src" in changedFlags);
