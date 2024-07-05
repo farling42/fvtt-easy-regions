@@ -4,6 +4,7 @@
 
 - Change of arrow symbol to rightwards double-arrow instead of wide-headed rightwards arrow.
 - Add module configuration option to disable UUID dropdown list (but why would you want this)?
+- Add option to perform Region Behavior matching based simply on identical Region names.
 - Slight rework of startup, so settings are guaranteed to be registered before each individual component is initialised.
 - Rename source files, and modify logging, to make it easier to see files in browser console.
 

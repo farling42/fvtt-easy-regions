@@ -7,11 +7,20 @@ export const SETTING_LEGEND_BEHAVIOR = "legendShowNoBehavior";
 export const SETTING_TELEPORT_AUTOLINK = "autoLinkTeleport";
 export const SETTING_TELEPORT_PATTERN1 = "teleportPattern1";
 export const SETTING_TELEPORT_PATTERN2 = "teleportPattern2";
+export const SETTING_TELEPORT_SAME_NAME = "teleportSameName";
 
 import { initRegionUUIDField } from './region-uuids.js';
 import { initRegionLinkTeleport } from './region-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
+
+
+export function relevantScenes() {
+  if (game.settings.get(MOD.id, SETTING_ONLY_NAV_SCENES))
+    return game.scenes.filter(scene => scene.navigation)
+  else
+    return game.scenes;
+}
 
 function init_module() {
 
@@ -84,12 +93,21 @@ function init_module() {
     config: true
   });
 
+  game.settings.register(MOD.id, SETTING_TELEPORT_SAME_NAME, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_SAME_NAME}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_SAME_NAME}.Hint`),
+    scope: "world",
+    type: String,
+    default: "$1 down to $2",
+    config: true
+  });
+
   console.log(`${MOD.title} | Game Settings Registered`);
 
-  if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID))     initRegionUUIDField();
-  if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK)) initRegionLinkTeleport();
-  if (game.settings.get(MOD.id, SETTING_REGION_ICONS))      initRegionIcons();
-  if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR))   initRegionPanel();  
+  if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID)) initRegionUUIDField();
+  if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK) || game.settings.get(MOD.id, SETTING_TELEPORT_SAME_NAME)) initRegionLinkTeleport();
+  if (game.settings.get(MOD.id, SETTING_REGION_ICONS)) initRegionIcons();
+  if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();
   console.groupEnd();
 }
 
