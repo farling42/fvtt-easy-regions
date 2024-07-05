@@ -3,6 +3,7 @@
 ## NEXT
 
 - Slight rework of startup, so settings are guaranteed to be registered before each individual component is initialised.
+- Rename a source file to reflect that it only provides UUID dropdown menu.
 
 ## 0.6.1
 
