@@ -3,7 +3,7 @@
 ## NEXT
 
 - Slight rework of startup, so settings are guaranteed to be registered before each individual component is initialised.
-- Rename a source file to reflect that it only provides UUID dropdown menu.
+- Rename source files, and modify logging, to make it easier to see files in browser console.
 
 ## 0.6.1
 
