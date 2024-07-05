@@ -174,13 +174,10 @@ async function my_update_region(document, changed, options, userId) {
   }
 }
 
-Hooks.on("ready", () => {
-  if (!game.settings.get(MODULE_NAME, SETTING_REGION_ICONS)) {
-    easyLog("Region Icons NOT enabled in module settings");
-    return;
-  }
+
+export function initRegionIcons() {
   Hooks.on("renderRegionConfig", my_render_region_config);
   Hooks.on("refreshRegion", my_refresh_region);
   Hooks.on("updateRegion", my_update_region);
-  easyLog(`Region Icons Enabled`);
-})
+  easyLog("`Region Icons Initialised");
+}

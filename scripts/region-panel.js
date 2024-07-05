@@ -7,11 +7,7 @@ import {
 } from './region-settings.js';
 
 
-Hooks.on("ready", () => {
-  if (!game.settings.get(MODULE_NAME, SETTING_LEGEND_BEHAVIOR)) {
-    easyLog("Legends show No Behavior NOT enabled in module settings");
-    return;
-  }
+export function initRegionPanel() {
 
   Hooks.on('renderRegionLegend', function (app, html) {
     for (const button of html.querySelectorAll('button.icon[data-action="config"')) {
@@ -34,4 +30,6 @@ Hooks.on("ready", () => {
       canvas.regions.legend.render();
     }
   })
-})
+
+  easyLog("Region Panel initialised");
+}

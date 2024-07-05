@@ -8,6 +8,11 @@ export const SETTING_TELEPORT_AUTOLINK = "autoLinkTeleport";
 export const SETTING_TELEPORT_PATTERN1 = "teleportPattern1";
 export const SETTING_TELEPORT_PATTERN2 = "teleportPattern2";
 
+import { initRegionUUIDField } from './easy-regions.js';
+import { initRegionLinkTeleport } from './auto-link-teleport.js';
+import { initRegionIcons } from './region-icons.js';
+import { initRegionPanel } from './region-panel.js';
+
 Hooks.once('ready', async function () {
 
   game.settings.register(MODULE_NAME, SETTING_ONLY_NAV_SCENES, {
@@ -68,6 +73,11 @@ Hooks.once('ready', async function () {
 
 
   easyLog("Game Settings Registered");
+
+  initRegionUUIDField();
+  if (game.settings.get(MODULE_NAME, SETTING_TELEPORT_AUTOLINK)) initRegionLinkTeleport();
+  if (game.settings.get(MODULE_NAME, SETTING_REGION_ICONS)) initRegionIcons();
+  if (game.settings.get(MODULE_NAME, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();  
 })
 
 

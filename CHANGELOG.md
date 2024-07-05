@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## NEXT
+
+- Slight rework of startup, so settings are guaranteed to be registered before each individual component is initialised.
+
 ## 0.6.1
 
 - Fix a logic error when checking the "only navigation scenes" for automatic linking of teleport regions.

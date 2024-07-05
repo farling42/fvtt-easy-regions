@@ -48,11 +48,8 @@ function findOtherRegion(name) {
     compare(pattern2_regexp, pattern1);
 }
 
-Hooks.on("ready", () => {
-  if (!game.settings.get(MODULE_NAME, SETTING_TELEPORT_AUTOLINK)) {
-    easyLog("Auto-linking of Teleport Regions NOT enabled in module settings");
-    return;
-  }
+
+export function initRegionLinkTeleport() {
 
   Hooks.on('createRegionBehavior', async function (app, context, id) {
     if (app.type !== BEHAVIOUR_TYPE) return;
@@ -76,5 +73,4 @@ Hooks.on("ready", () => {
     app.update({ "system.destination": otherRegion.uuid })
     otherBehavior.update({ "system.destination": thisRegion.uuid })
   })
-
-}) // hooks ready
+}

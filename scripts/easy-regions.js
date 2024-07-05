@@ -80,10 +80,11 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   return result;
 }
 
-Hooks.once('ready', async function () {
+
+export function initRegionUUIDField() {
   libWrapper.register(MODULE_NAME,
     'foundry.applications.elements.HTMLDocumentTagsElement.prototype._buildElements',
     my_HTMLDocumentTagsElement_buildElements,
     libWrapper.WRAPPER);
   easyLog(`HTMLDocumentTagsElement._buildElements hook installed`);
-})
+}
