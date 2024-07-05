@@ -8,7 +8,7 @@ export const SETTING_TELEPORT_AUTOLINK = "autoLinkTeleport";
 export const SETTING_TELEPORT_PATTERN1 = "teleportPattern1";
 export const SETTING_TELEPORT_PATTERN2 = "teleportPattern2";
 
-import { initRegionUUIDField } from './easy-regions.js';
+import { initRegionUUIDField } from './region-uuids.js';
 import { initRegionLinkTeleport } from './auto-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
