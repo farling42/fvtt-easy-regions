@@ -13,7 +13,8 @@ import { libWrapper } from './lib/libwrapper-shim.js'
 import { MOD, SETTING_ONLY_NAV_SCENES } from './easy-regions.js';
 
 const REGION_DATALIST_NAME = "region-uuids";
-const SPACING = " \u{2794} ";
+//const SPACING = " \u{2794} ";   // UNICODE: "Heavy Wide-Headed Rightwards Arrow" (Dingbats block)
+const SPACING = " \u{21D2} ";   // UNICODE: "Rightwards Double Arrow" (Arrows block)
 
 function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   const result = wrapper();
