@@ -3,7 +3,7 @@ import {
   SETTING_TELEPORT_PATTERN1,
   SETTING_TELEPORT_PATTERN2,
   SETTING_ONLY_NAV_SCENES
-} from './region-settings.js';
+} from './easy-regions.js';
 
 const BEHAVIOUR_TYPE = "teleportToken";
 

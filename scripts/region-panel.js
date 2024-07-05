@@ -1,6 +1,6 @@
 // The addition or deletion of a RegionBehavior does not trigger a render of the Region Legend window.
 
-import { MOD } from './region-settings.js';
+import { MOD } from './easy-regions.js';
 
 export function initRegionPanel() {
 

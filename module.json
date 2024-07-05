@@ -28,11 +28,7 @@
     ]
   },
   "esmodules": [
-    "scripts/region-settings.js",
-    "scripts/region-uuids.js",
-    "scripts/region-panel.js",
-    "scripts/auto-link-teleport.js",
-    "scripts/region-icons.js"
+    "scripts/easy-regions.js"
   ],
   "styles": [
     "styles/easy-regions.css"

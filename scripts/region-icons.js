@@ -4,7 +4,7 @@
 // Draw the region in the centre of each of the region's polygons.
 //
 
-import { MOD } from './region-settings.js';
+import { MOD } from './easy-regions.js';
 
 let icon_field;
 

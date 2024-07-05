@@ -10,7 +10,7 @@
 
 import { libWrapper } from './lib/libwrapper-shim.js'
 
-import { MOD, SETTING_ONLY_NAV_SCENES } from './region-settings.js';
+import { MOD, SETTING_ONLY_NAV_SCENES } from './easy-regions.js';
 
 const REGION_DATALIST_NAME = "region-uuids";
 const SPACING = " \u{2794} ";
