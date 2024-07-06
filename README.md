@@ -32,7 +32,7 @@ A simple workflow:
 
 You can enter some of the text of the label (not the UUID) in order for the drop-down list to automatically shrink to just the entries containing the entered text.
 
-![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/regions-default-datalist.png)
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/regions-default-datalist.webp)
 
 There is a module option to restrict the list of UUIDs for Scenes, Regions and Region Behaviors to only those in Scenes which have Navigation enabled (and therefore appear in the list across the top of the canvas). _This should help alleviate the list being too long in worlds with many scenes._
 
