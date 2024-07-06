@@ -40,6 +40,8 @@ There is a module option to use custom handling for the datalist since Chromium-
 
 ![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/regions-custom-datalist.webp)
 
+**NOTE**: The electron browser which is used in the Foundry app does not provide a scrollbar in the dropdown datalist, so you will only see a list up to the height of your app window. In this case you can start typing the name of the scene or region to reduce the list down to all the relevant entries.
+
 ## Region Icons
 
 - Define an Icon and specify its colour and size, to be displayed in the centre of each polygon of a region.
