@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.7.2
+
+- Provide an option to provide custom handling for the datalist which is presented for UUID fields. It will hide the value that is displayed by Chromium browsers (Firefox doesn't need this custom handling.)
+
 ## 0.7.1
 
 - Prevent error when updating Region icons on non-displayed scenes (e.g. via a global macro)
