@@ -12,6 +12,10 @@
       "Name": "Add Icons to Regions",
       "Hint": "Adds fields to a Region definition to specify an optional icon (with tint and size)"
     },
+    "customDropdown": {
+      "Name": "Use Custom Dropdown Handling",
+      "Hint": "Your browser's default display of the UUID dropdown list might show big UUID values and small labels. Enabling this option will display only the labels"
+    },
     "legendShowNoBehavior": {
       "Name": "Highlight regions with no behaviors",
       "Hint": "Changes the colour of the Config icon in the Region list when a region has no behaviors defined"

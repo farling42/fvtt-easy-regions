@@ -1,6 +1,7 @@
 export let MOD;
 
 export const SETTING_DROPDOWN_UUID = "dropdownUUIDs";
+export const SETTING_CUSTOM_DROPDOWN = "customDropdown";
 export const SETTING_ONLY_NAV_SCENES = "onlyNavigatableScenes";
 export const SETTING_REGION_ICONS = "regionIcons";
 export const SETTING_LEGEND_BEHAVIOR = "legendShowNoBehavior";
@@ -31,6 +32,15 @@ function init_module() {
   game.settings.register(MOD.id, SETTING_DROPDOWN_UUID, {
     name: game.i18n.localize(`${MOD.id}.${SETTING_DROPDOWN_UUID}.Name`),
     hint: game.i18n.localize(`${MOD.id}.${SETTING_DROPDOWN_UUID}.Hint`),
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
+  game.settings.register(MOD.id, SETTING_CUSTOM_DROPDOWN, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_CUSTOM_DROPDOWN}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_CUSTOM_DROPDOWN}.Hint`),
     scope: "world",
     type: Boolean,
     default: true,
