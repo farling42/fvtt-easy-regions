@@ -66,7 +66,7 @@ https://github.com/farling42/fvtt-easy-regions/releases/latest/download/module.j
 
 ## Macros
 
-The following macro will add a macro to every Region whose name matches the given pattern
+The following macro will add an icon to every Region whose name matches the given pattern
 
 ```js
 const pattern = "down to";
