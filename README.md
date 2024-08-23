@@ -23,7 +23,8 @@ For example, in a region called "A25 down to B05", creating a Teleport Behavior 
 A simple workflow:
 
 - On first scene, create a region called "A01 down to B02"
-- On second scene, create a region called "B02 up to A01", then create a Teleport Behavior in that region
+- On second scene, create a region called "B02 up to A01" (save this new region now)
+- Open the second region again and create a Teleport Behavior in that region
 - _the teleport will be automatically linked to the region on the first scene_
 
 ## UUID references
