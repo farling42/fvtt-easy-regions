@@ -27,6 +27,8 @@ A simple workflow:
 - Open the second region again and create a Teleport Behavior in that region
 - _the teleport will be automatically linked to the region on the first scene_
 
+![video](https://youtu.be/2bDblk4W034)
+
 ## UUID references
 
 - Adds a drop-down menu to all UUIDFields (e.g. for selecting a Macro, Region, or Region Behavior).
