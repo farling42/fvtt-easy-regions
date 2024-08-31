@@ -62,6 +62,13 @@ There is a module option to disable icons if they are not required.
 
 There is a module option to disable this highlighting if it is not required.
 
+## Cost display on Drag Ruler
+
+- The PF2E system has regions which indicate Difficult Terrain. This option updates the label of the drag ruler to also show
+the cost if it is different from the distance.
+
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-distance.webp)
+
 ## Installation
 
 The module can be found from Foundry's module settings page. Alternatively the latest version can be installed using the following link:

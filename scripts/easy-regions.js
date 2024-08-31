@@ -9,11 +9,20 @@ export const SETTING_TELEPORT_AUTOLINK = "autoLinkTeleport";
 export const SETTING_TELEPORT_PATTERN1 = "teleportPattern1";
 export const SETTING_TELEPORT_PATTERN2 = "teleportPattern2";
 export const SETTING_TELEPORT_SAME_NAME = "teleportSameName";
+export const SETTING_TRIGGER_ON_CLICK = "triggerOnClick";
+export const SETTING_CLICK_LEFT1  = "triggerClickLeft1";
+export const SETTING_CLICK_LEFT2  = "triggerClickLeft2";
+export const SETTING_CLICK_RIGHT1 = "triggerClickRight1";
+export const SETTING_CLICK_RIGHT2 = "triggerClickRight2";
+export const SETTING_RULER_SHOW_COST = "rulerShowCost";
+
 
 import { initRegionUUIDField } from './region-uuids.js';
 import { initRegionLinkTeleport } from './region-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
+import { initRulerDistance } from './region-distance.js';
+//import { initClickEvents } from './region-click.js';
 
 
 export function relevantScenes() {
@@ -112,13 +121,85 @@ function init_module() {
     config: true
   });
 
+  game.settings.register(MOD.id, SETTING_RULER_SHOW_COST, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_RULER_SHOW_COST}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_RULER_SHOW_COST}.Hint`),
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
+/*
+  game.settings.register(MOD.id, SETTING_TRIGGER_ON_CLICK, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_TRIGGER_ON_CLICK}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_TRIGGER_ON_CLICK}.Hint`),
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true
+  });
+
+  let region_options = { none: ""};
+  for (const [key,value] of Object.entries(CONST.REGION_EVENTS)) {
+    region_options[value] = key;
+  }
+
+  game.settings.register(MOD.id, SETTING_CLICK_LEFT1, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_LEFT1}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_LEFT1}.Hint`),
+    scope: "world",
+    type: String,
+    default: "",
+    choices: region_options,
+    config: true,
+    requiresReload: true
+  });
+
+  game.settings.register(MOD.id, SETTING_CLICK_LEFT2, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_LEFT2}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_LEFT2}.Hint`),
+    scope: "world",
+    type: String,
+    default: "",
+    choices: region_options,
+    config: true,
+    requiresReload: true
+  });
+
+  game.settings.register(MOD.id, SETTING_CLICK_RIGHT1, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_RIGHT1}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_RIGHT1}.Hint`),
+    scope: "world",
+    type: String,
+    default: "",
+    choices: region_options,
+    config: true,
+    requiresReload: true
+  });
+
+  game.settings.register(MOD.id, SETTING_CLICK_RIGHT2, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_RIGHT2}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_CLICK_RIGHT2}.Hint`),
+    scope: "world",
+    type: String,
+    default: "",
+    choices: region_options,
+    config: true,
+    requiresReload: true
+  });
+*/
+
   console.log(`${MOD.title} | Game Settings Registered`);
 
   if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID)) initRegionUUIDField();
   if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK) || game.settings.get(MOD.id, SETTING_TELEPORT_SAME_NAME)) initRegionLinkTeleport();
   if (game.settings.get(MOD.id, SETTING_REGION_ICONS)) initRegionIcons();
   if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();
+  if (game.settings.get(MOD.id, SETTING_RULER_SHOW_COST)) initRulerDistance();
+  //if (game.settings.get(MOD.id, SETTING_TRIGGER_ON_CLICK)) initClickEvents();
   console.groupEnd();
 }
 
-Hooks.once('ready', init_module);
+// Needs to be canvasInit for initClickEvents to work on first scene
+Hooks.once('canvasInit', init_module);

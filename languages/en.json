@@ -50,6 +50,10 @@
         "hint": "The size of the icon (minimum 32)",
         "validation": "must be an integer greater than 32"
       }
+    },
+    "rulerShowCost": {
+      "Name": "Show Cost on Ruler",
+      "Hint": "Changes the ruler label to also show Cost (if different from distance)"
     }
   }
 }
