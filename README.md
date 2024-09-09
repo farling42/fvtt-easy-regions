@@ -97,3 +97,7 @@ for (const scene of game.scenes) {
 Additional output can be displayed in the Browser's console by enabling the Verbose view of messages, and entering the following command into the browser console:
 
 `CONFIG.debug["easy-regions"]=true`
+
+## LICENSING
+
+This software is licensed under the MIT license as well as the Foundry [Limited License for Package Development](https://foundryvtt.com/article/license/)

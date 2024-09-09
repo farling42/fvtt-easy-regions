@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.9.0
+
+- Provide an option to allow the prompt for Teleport Behavior to be specified individually for each region behavior.
+
 ## 0.8.0
 
 - Provide the option to display Cost (if different) as well as distance on the drag ruler.

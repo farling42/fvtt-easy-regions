@@ -9,6 +9,7 @@ export const SETTING_TELEPORT_AUTOLINK = "autoLinkTeleport";
 export const SETTING_TELEPORT_PATTERN1 = "teleportPattern1";
 export const SETTING_TELEPORT_PATTERN2 = "teleportPattern2";
 export const SETTING_TELEPORT_SAME_NAME = "teleportSameName";
+export const SETTING_TELEPORT_PROMPT = "teleportPrompt";
 export const SETTING_TRIGGER_ON_CLICK = "triggerOnClick";
 export const SETTING_CLICK_LEFT1  = "triggerClickLeft1";
 export const SETTING_CLICK_LEFT2  = "triggerClickLeft2";
@@ -22,6 +23,7 @@ import { initRegionLinkTeleport } from './region-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
 import { initRulerDistance } from './region-distance.js';
+import { initTeleportPrompt } from './region-teleport-prompt.js';
 //import { initClickEvents } from './region-click.js';
 
 
@@ -32,7 +34,7 @@ export function relevantScenes() {
     return game.scenes;
 }
 
-function init_module() {
+function init_settings() {
 
   MOD = game.modules.get("easy-regions");
 
@@ -121,6 +123,16 @@ function init_module() {
     config: true
   });
 
+  game.settings.register(MOD.id, SETTING_TELEPORT_PROMPT, {
+    name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PROMPT}.Name`),
+    hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PROMPT}.Hint`),
+    scope: "world",
+    type: Boolean,
+    default: true,
+    config: true,
+    requiresReload: true
+  });
+
   game.settings.register(MOD.id, SETTING_RULER_SHOW_COST, {
     name: game.i18n.localize(`${MOD.id}.${SETTING_RULER_SHOW_COST}.Name`),
     hint: game.i18n.localize(`${MOD.id}.${SETTING_RULER_SHOW_COST}.Hint`),
@@ -192,14 +204,24 @@ function init_module() {
 
   console.log(`${MOD.title} | Game Settings Registered`);
 
+  if (game.settings.get(MOD.id, SETTING_TELEPORT_PROMPT)) initTeleportPrompt();
+
+  console.groupEnd();
+}
+
+function init_canvas() {
+  console.group(`${MOD.title} | init-canvas`);
+
   if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID)) initRegionUUIDField();
   if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK) || game.settings.get(MOD.id, SETTING_TELEPORT_SAME_NAME)) initRegionLinkTeleport();
   if (game.settings.get(MOD.id, SETTING_REGION_ICONS)) initRegionIcons();
   if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();
   if (game.settings.get(MOD.id, SETTING_RULER_SHOW_COST)) initRulerDistance();
+
   //if (game.settings.get(MOD.id, SETTING_TRIGGER_ON_CLICK)) initClickEvents();
   console.groupEnd();
 }
 
+Hooks.on("init", init_settings);
 // Needs to be canvasInit for initClickEvents to work on first scene
-Hooks.once('canvasInit', init_module);
+Hooks.once('canvasInit', init_canvas);

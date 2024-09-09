@@ -36,6 +36,10 @@
       "Name": "Allow Teleport Link to Same Region Name",
       "Hint": "When looking for a Region to Teleport to, link if the Region name is identical (in preference to the following pattern matching)"
     },
+    "teleportPrompt": {
+      "Name": "Custom Prompts for Teleporting",
+      "Hint": "When enabled, two additional fields are present in each Teleport Token behavior. If not blank, these fields will supercede the default Foundry prompts"
+    },
     "regionConfig": {
       "src": {
         "label": "Icon Image",
@@ -54,6 +58,22 @@
     "rulerShowCost": {
       "Name": "Show Cost on Ruler",
       "Hint": "Changes the ruler label to also show Cost (if different from distance)"
+    }
+  },
+  "BEHAVIOR": {
+    "TYPES": {
+      "teleportToken": {
+        "FIELDS": {
+          "confirmPrompt": {
+            "label": "Player Confirm Text",
+            "hint": "The text which should be displayed to players when using the teleport, use {token}, {region}, {scene}"
+          },
+          "confirmPromptGM": {
+            "label": "GM Confirm Text",
+            "hint": "The text which should be displayed to GMs when using the teleport, use {token}, {region}, {scene}"
+          }
+        }
+      }
     }
   }
 }
