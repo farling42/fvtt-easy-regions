@@ -69,6 +69,10 @@ the cost if it is different from the distance.
 
 ![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-distance.webp)
 
+## Custom Message for Teleport Token
+
+- Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}` within your message to get the name of the corresponding object.
+
 ## Installation
 
 The module can be found from Foundry's module settings page. Alternatively the latest version can be installed using the following link:
