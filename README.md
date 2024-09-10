@@ -71,7 +71,9 @@ the cost if it is different from the distance.
 
 ## Custom Message for Teleport Token
 
-- Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}` within your message to get the name of the corresponding object.
+- Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}`, `{behavior}` within your message to get the name of the corresponding object.
+
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-confirm-teleport.webp)
 
 ## Installation
 
