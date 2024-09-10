@@ -1,10 +1,10 @@
 // Original code from foundry: 
 // client-esm\data\region-behaviors\teleport-token.mjs
 //
-// accessible via:
-//   foundry.data.regionBehaviors.EasyTeleportTokenRegionBehaviorType
+// This code is modified under Foundry's Limited License for Package Development
 
-// We only want to change:
+
+// We only want to change the hard-coded use of:
 //   BEHAVIOR.TYPES.teleportToken.Confirm
 //   BEHAVIOR.TYPES.teleportTOken.ConfirmGM
 
@@ -50,7 +50,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
     }
     if (this.choice) {
       let confirmed;
-      if (user.isSelf) confirmed = await EasyTeleportTokenRegionBehaviorType.#confirmDialog(token, destination, this);
+      if (user.isSelf) confirmed = await EasyTeleportTokenRegionBehaviorType.#confirmDialog(token, destination, this.parent);
       else {
         confirmed = await new Promise(resolve => {
           game.socket.emit("confirmTeleportToken", {
@@ -333,7 +333,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
       if (!destination) return;
       const token = await fromUuid(tokenUuid);
       if (!token) return;
-      confirmed = await EasyTeleportTokenRegionBehaviorType.#confirmDialog(token, destination, this);
+      confirmed = await EasyTeleportTokenRegionBehaviorType.#confirmDialog(token, destination, behavior);
     } finally {
       ack(confirmed);
     }
@@ -350,10 +350,12 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
   static async #confirmDialog(token, destination, behavior) {
     return foundry.applications.api.DialogV2.confirm({
       window: { title: game.i18n.localize(CONFIG.RegionBehavior.typeLabels.teleportToken) },
-      content: `<p>${game.i18n.format(game.user.isGM ? (behavior.confirmPromptGM || "BEHAVIOR.TYPES.teleportToken.ConfirmGM")
-        : (behavior.confirmPrompt || "BEHAVIOR.TYPES.teleportToken.Confirm"), {
-        token: token.name, region: destination.name,
-        scene: destination.parent.name
+      content: `<p>${game.i18n.format(game.user.isGM ? (behavior.system.confirmPromptGM || "BEHAVIOR.TYPES.teleportToken.ConfirmGM")
+        : (behavior.system.confirmPrompt || "BEHAVIOR.TYPES.teleportToken.Confirm"), {
+        token: token.name,
+        region: destination.name,
+        scene: destination.parent.name,
+        behavior: behavior.name
       })}</p>`,
       rejectClose: false
     });

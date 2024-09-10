@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.9.1
+
+- Clarify license use of code in easy-teleport-token.mjs
+- Add `{behavior}` to allow the name of the Teleport Token region behavior object to be used in the confirm message string.
+- Ensure New Confirm dialog works for Players.
+
 ## 0.9.0
 
 - Provide an option to allow the prompt for Teleport Behavior to be specified individually for each region behavior.

@@ -10,5 +10,7 @@ export function initTeleportPrompt() {
     teleportToken: EasyTeleportTokenRegionBehaviorType
   })
 
+  Hooks.on("ready", () => EasyTeleportTokenRegionBehaviorType._activateSocketListeners(game.socket));
+
   console.log(`${MOD.title} | Teleport Region Prompts Initialised`);
 }
