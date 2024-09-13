@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.9.2
+
+- Don't display the distance cost if it is 0 (which occurs in combat for other players when a player moves their token).
+
 ## 0.9.1
 
 - Clarify license use of code in easy-teleport-token.mjs

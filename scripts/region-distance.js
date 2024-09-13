@@ -4,7 +4,8 @@ import { MOD } from './easy-regions.js';
 
 function ruler_getSegmentLabel(wrapped, segment) {
   let label = wrapped(segment);
-  if (segment.teleport) return label;
+  // During combat, other players see the ruler without any cost associated with it.
+  if (segment.teleport || this.totalCost === 0) return label;
   if (segment.distance === segment.cost && (!segment.last || this.totalDistance === this.totalCost)) return label;
 
   const units = canvas.grid.units;
