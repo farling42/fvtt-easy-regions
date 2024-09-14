@@ -63,7 +63,7 @@ There is a module option to disable icons if they are not required.
 
 There is a module option to disable this highlighting if it is not required.
 
-## Cost display on Drag Ruler
+## Cost display on Drag Ruler (PF2E only)
 
 - The PF2E system has regions which indicate Difficult Terrain. This option updates the label of the drag ruler to also show
 the cost if it is different from the distance.
