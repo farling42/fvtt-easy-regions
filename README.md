@@ -69,6 +69,8 @@ the cost if it is different from the distance.
 
 ![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-distance.webp)
 
+**NOTE**: Only the player moving the token has it's movement cost calculated by the PF2E game system, therefore the GM will not see the cost on the ruler when players are moving their token.
+
 ## Custom Message for Teleport Token
 
 - Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}`, `{behavior}` within your message to get the name of the corresponding object.
