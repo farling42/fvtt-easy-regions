@@ -28,6 +28,7 @@ A simple workflow:
 - _the teleport will be automatically linked to the region on the first scene_
 
 Here's a quick video showing two regions being linked:
+
 [![REGION TELEPORT EXAMPLE](http://img.youtube.com/vi/2bDblk4W034/0.jpg)](http://www.youtube.com/watch?v=2bDblk4W034 "Quick teleport creation on Foundry using the Easy Regions module")
 
 ## UUID references
