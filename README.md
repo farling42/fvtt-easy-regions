@@ -68,7 +68,7 @@ There is a module option to disable this highlighting if it is not required.
 - The PF2E system has regions which indicate Difficult Terrain. This option updates the label of the drag ruler to also show
 the cost if it is different from the distance.
 
-<img src="https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-distance.webp" width="300">
+<img src="https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-distance.webp" width="500">
 
 **NOTE**: Only the player moving the token has it's movement cost calculated by the PF2E game system, therefore the GM will not see the cost on the ruler when players are moving their token.
 
