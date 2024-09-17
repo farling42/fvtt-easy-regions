@@ -63,14 +63,16 @@ There is a module option to disable icons if they are not required.
 
 There is a module option to disable this highlighting if it is not required.
 
-## Cost display on Drag Ruler (PF2E only)
+## Cost display on Ruler
+
+_(Currently only for PF2E game system, but actually works with any game system which implements the `Ruler._getCostFunction` method)_
 
 - The PF2E system has regions which indicate Difficult Terrain. This option updates the label of the drag ruler to also show
 the cost if it is different from the distance.
 
 <img src="https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-distance.webp" width="500">
 
-**NOTE**: Only the player moving the token has it's movement cost calculated by the PF2E game system, therefore the GM will not see the cost on the ruler when players are moving their token.
+**NOTE**: Only the player moving the token has it's movement **cost** calculated, therefore the GM will not see the cost on the ruler when players are moving their token.
 
 ## Custom Message for Teleport Token
 
