@@ -15,14 +15,12 @@ export const SETTING_CLICK_LEFT1  = "triggerClickLeft1";
 export const SETTING_CLICK_LEFT2  = "triggerClickLeft2";
 export const SETTING_CLICK_RIGHT1 = "triggerClickRight1";
 export const SETTING_CLICK_RIGHT2 = "triggerClickRight2";
-export const SETTING_RULER_SHOW_COST = "rulerShowCost";
 
 
 import { initRegionUUIDField } from './region-uuids.js';
 import { initRegionLinkTeleport } from './region-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
-import { initRulerDistance } from './region-distance.js';
 import { initTeleportPrompt } from './region-teleport-prompt.js';
 //import { initClickEvents } from './region-click.js';
 
@@ -133,15 +131,6 @@ function init_settings() {
     requiresReload: true
   });
 
-  game.settings.register(MOD.id, SETTING_RULER_SHOW_COST, {
-    name: game.i18n.localize(`${MOD.id}.${SETTING_RULER_SHOW_COST}.Name`),
-    hint: game.i18n.localize(`${MOD.id}.${SETTING_RULER_SHOW_COST}.Hint`),
-    scope: "world",
-    type: Boolean,
-    default: true,
-    config: true
-  });
-
 /*
   game.settings.register(MOD.id, SETTING_TRIGGER_ON_CLICK, {
     name: game.i18n.localize(`${MOD.id}.${SETTING_TRIGGER_ON_CLICK}.Name`),
@@ -216,7 +205,6 @@ function init_canvas() {
   if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK) || game.settings.get(MOD.id, SETTING_TELEPORT_SAME_NAME)) initRegionLinkTeleport();
   if (game.settings.get(MOD.id, SETTING_REGION_ICONS)) initRegionIcons();
   if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();
-  if (game.settings.get(MOD.id, SETTING_RULER_SHOW_COST)) initRulerDistance();
 
   //if (game.settings.get(MOD.id, SETTING_TRIGGER_ON_CLICK)) initClickEvents();
   console.groupEnd();
