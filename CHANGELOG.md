@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.0
+
+- Foundry V13 compatibility.
+- Remove option to show distance in Drag label (it was PF2E-specific only, and not related to regions anyway).
+
 ## 0.9.3
 
 - Mark as NOT compatible with Foundry V13.
