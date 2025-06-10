@@ -92,9 +92,9 @@ async function icon_refreshRegion (region, options) {
   region.icons.eventMode = "none";
 
   region.iconTextureSrc = texture;
-  region.iconTexture = await loadTexture(texture);
+  region.iconTexture = await foundry.canvas.loadTexture(texture);
 
-  for (const node of region.polygonTree) {
+  for (const node of region.document.polygonTree) {
     const icon = new PIXI.Sprite();
     icon.texture = region.iconTexture;
     icon.tint = iconTint;
@@ -130,7 +130,7 @@ async function icon_updateRegion(document, changed, options, userId) {
     if (changedFlags.src) {
       if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: creating new texture`)
       region.iconTextureSrc = changedFlags.src;
-      region.iconTexture = await loadTexture(changedFlags.src);
+      region.iconTexture = await foundry.canvas.loadTexture(changedFlags.src);
       for (const node of region.icons.children)
         node.texture = region.iconTexture;
     }
@@ -139,7 +139,7 @@ async function icon_updateRegion(document, changed, options, userId) {
   const iconSize = changedFlags?.size ?? regionFlags.size ?? 32;
   if (update_border) {
     const oldCount = region.icons.children.length;
-    const newCount = region.polygonTree.children.length;
+    const newCount = region.document.polygonTree.children.length;
     if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: changing border length from ${oldCount} to ${newCount}`)
     for (let i = oldCount; i > newCount; i--)
       region.icons.children[i - 1].destroy({ children: true })
@@ -154,7 +154,7 @@ async function icon_updateRegion(document, changed, options, userId) {
   if (update_tint || update_size || update_border) {
     if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: updating each icon`)
     let iconCount = 0;
-    for (const node of region.polygonTree) {
+    for (const node of region.document.polygonTree) {
       const icon = region.icons.children[iconCount++];
       if (update_tint) icon.tint = iconTint;
       if (update_size || update_border) {

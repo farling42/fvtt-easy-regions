@@ -216,7 +216,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
           const center = grid.getCenterPoint({ i, j });
 
           // The grid space center must be inside the region to be a valid drop target
-          if (!region.polygonTree.testPoint(center)) continue;
+          if (!region.document.polygonTree.testPoint(center)) continue;
 
           const position = token.getSnappedPosition({ x: center.x - pivot.x, y: center.y - pivot.y });
           position.x = Math.round(position.x);
@@ -224,7 +224,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
           position.elevation = elevation;
 
           // The center point of the token must be inside the region
-          if (!region.polygonTree.testPoint(token.getCenterPoint(position))) continue;
+          if (!region.document.polygonTree.testPoint(token.getCenterPoint(position))) continue;
 
           // The token itself must be inside the region
           if (!token.testInsideRegion(region, position)) continue;
@@ -291,7 +291,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
       position = { x, y, elevation };
 
       // The center point of the token must be inside the region
-      if (!region.polygonTree.testPoint(token.getCenterPoint(position))) continue;
+      if (!region.document.polygonTree.testPoint(token.getCenterPoint(position))) continue;
 
       // The token itself must be inside the region
       if (!token.testInsideRegion(region, position)) continue;

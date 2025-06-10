@@ -4,8 +4,8 @@
   "description": "Provides some quality-of-life improvements for managing Regions",
   "version": "#{VERSION}#",
   "compatibility": {
-    "minimum": 12,
-    "verified": "12.331"
+    "minimum": 13,
+    "verified": 13.345
   },
   "authors": [
     {

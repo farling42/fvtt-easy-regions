@@ -201,10 +201,12 @@ function init_settings() {
 function init_canvas() {
   console.group(`${MOD.title} | init-canvas`);
 
-  if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID)) initRegionUUIDField();
-  if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK) || game.settings.get(MOD.id, SETTING_TELEPORT_SAME_NAME)) initRegionLinkTeleport();
   if (game.settings.get(MOD.id, SETTING_REGION_ICONS)) initRegionIcons();
-  if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();
+  if (game.user.isGM) {
+    if (game.settings.get(MOD.id, SETTING_DROPDOWN_UUID)) initRegionUUIDField();
+    if (game.settings.get(MOD.id, SETTING_TELEPORT_AUTOLINK) || game.settings.get(MOD.id, SETTING_TELEPORT_SAME_NAME)) initRegionLinkTeleport();
+    if (game.settings.get(MOD.id, SETTING_LEGEND_BEHAVIOR)) initRegionPanel();
+  }
 
   //if (game.settings.get(MOD.id, SETTING_TRIGGER_ON_CLICK)) initClickEvents();
   console.groupEnd();
