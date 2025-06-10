@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.1
+
+- Set to be Foundry 13 only.
+- Remove warnings generated for non-GM users when regions are being modified.
+
 ## 1.0.0
 
 - Foundry V13 compatibility.
