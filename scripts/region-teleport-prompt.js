@@ -12,10 +12,9 @@ export function initTeleportPrompt() {
 
   Hooks.on("ready", () => {
     console.log(`${MOD.title} | Teleport Region Event Initialising`);
-    game.socket.removeAllListeners("confirmTeleportToken");
-    EasyTeleportTokenRegionBehaviorType._activateSocketListeners(game.socket)
+    CONFIG.queries.confirmTeleportToken = EasyTeleportTokenRegionBehaviorType._confirmQuery
     console.log(`${MOD.title} | Teleport Region Event Initialised`);
   });
-
+  
   console.log(`${MOD.title} | Teleport Region Prompts Initialised`);
 }
