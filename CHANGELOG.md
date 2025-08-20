@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.2
+
+- Use V13's TeleportTokenRegionBehaviorType class as the new base to allow custom messages for teleporting.
+
 ## 1.0.1
 
 - Set to be Foundry 13 only.
