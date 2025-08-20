@@ -6,9 +6,7 @@ export function initTeleportPrompt() {
 
   console.log(`${MOD.title} | Teleport Region Prompts Initialising`);
 
-  Object.assign(CONFIG.RegionBehavior.dataModels, {
-    teleportToken: EasyTeleportTokenRegionBehaviorType
-  })
+  CONFIG.RegionBehavior.dataModels.teleportToken = EasyTeleportTokenRegionBehaviorType;
 
   Hooks.on("ready", () => {
     console.log(`${MOD.title} | Teleport Region Event Initialising`);
