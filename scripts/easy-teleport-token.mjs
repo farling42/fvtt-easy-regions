@@ -28,7 +28,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
       // MODULE: add two new fields
       // StringField defaults: { blank: true, trim: true, nullable: false, initial: undefined, choices: undefined, textSearch: false }
       confirmPrompt: new fields.StringField({ placeholder: _loc("BEHAVIOR.TYPES.teleportToken.Confirm") }),
-      confirmPromptGM: new fields.StringField({ placeholder: _loc("BEHAVIOR.TYPES.teleportToken.Confirm") })
+      confirmPromptGM: new fields.StringField({ placeholder: _loc("BEHAVIOR.TYPES.teleportToken.ConfirmRevealed") })
     };
   }
 
@@ -137,8 +137,8 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
   static async #confirmDialog(token, destination, behavior) {
     // MODULE - change template for message
     const question = localFormat(game.user.isGM ?
-      (behavior.system.confirmPromptGM || "BEHAVIOR.TYPES.teleportToken.ConfirmGM")
-      : (behavior.system.confirmPrompt || "BEHAVIOR.TYPES.teleportToken.Confirm"), {
+      (behavior.system.confirmPromptGM || _loc("BEHAVIOR.TYPES.teleportToken.ConfirmRevealed"))
+      : (behavior.system.confirmPrompt || _loc("BEHAVIOR.TYPES.teleportToken.Confirm")), {
       token: foundry.utils.escapeHTML(token.name),
       region: foundry.utils.escapeHTML(destination.name),
       scene: foundry.utils.escapeHTML(destination.parent.name)
