@@ -161,6 +161,7 @@ async function icon_updateRegion(document, changed, options, userId) {
     let iconCount = 0;
     for (const node of region.document.polygonTree) {
       const icon = region.icons.children[iconCount++];
+      if (!icon) continue;
       if (update_tint) icon.tint = iconTint;
       if (update_size || update_border) {
         if (update_size)
