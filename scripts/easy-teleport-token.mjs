@@ -136,7 +136,7 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
    */
   static async #confirmDialog(token, destination, behavior) {
     // MODULE - change template for message
-    const question = game.i18n.format(game.user.isGM ?
+    const question = localFormat(game.user.isGM ?
       (behavior.system.confirmPromptGM || "BEHAVIOR.TYPES.teleportToken.ConfirmGM")
       : (behavior.system.confirmPrompt || "BEHAVIOR.TYPES.teleportToken.Confirm"), {
       token: foundry.utils.escapeHTML(token.name),
@@ -149,4 +149,9 @@ export default class EasyTeleportTokenRegionBehaviorType extends foundry.data.re
       content: `<p>${question}</p>`
     });
   }
+}
+
+function localFormat(template, values) {
+  const formatTemplatePattern = /{[^}]+}/g;
+  return template.replace(formatTemplatePattern, k => values[k.slice(1, -1)]);
 }
