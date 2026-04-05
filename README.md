@@ -55,19 +55,19 @@ There is a module option to use custom handling for the datalist since Chromium-
 
 There is a module option to disable icons if they are not required.
 
-## Highlight Regions with no Behaviors in Region List
+## Custom Message for Teleport Token
+
+- Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}`, `{behavior}` within your message to get the name of the corresponding object.
+
+![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-confirm-teleport.webp)
+
+## Highlight Regions with no Behaviors in Region List (not V14+)
 
 - Changes the colour of the Config button in the Region list if the region has no behaviors configured on it.
 
 ![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/easy-region-no-behaviors.webp)
 
 There is a module option to disable this highlighting if it is not required.
-
-## Custom Message for Teleport Token
-
-- Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}`, `{behavior}` within your message to get the name of the corresponding object.
-
-![image](https://raw.githubusercontent.com/farling42/fvtt-easy-regions/master/images/region-confirm-teleport.webp)
 
 ## Installation
 
