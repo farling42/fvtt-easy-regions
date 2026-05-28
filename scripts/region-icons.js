@@ -19,7 +19,8 @@ function iconField() {
     src: new fields.FilePathField({
       categories: ["IMAGE"],
       label: `${PREFIX}.src.label`,
-      hint: `${PREFIX}.src.hint`
+      hint: `${PREFIX}.src.hint`,
+      initial: "",
     }),
     tint: new fields.ColorField({
       nullable: false,
@@ -39,6 +40,7 @@ function iconField() {
       validationError: `${PREFIX}.size.validation`
     }),
   }, {
+    label: "Easy Regions"
     // Options
   }, {
     // Context
@@ -52,32 +54,34 @@ function icon_renderRegionConfig(doc, html) {
   const existing = html.querySelector(`fieldset#${MOD.id}`);
   if (existing) return;
   // Create the FormGroup to add to the form (specific)
-  const flags = doc.document.flags[MOD.id];
+  const flags = doc.document.flags[MOD.id] ?? iconField().getInitialValue();
   const fields = iconField().fields;
-  const group = document.createElement("fieldset");
-  group.id = MOD.id;
-  group.append(fields.src.toFormGroup({ localize: true }, {
-    value: flags?.src,
-    localize: true,
-  }));
-  const tint_group = fields.tint.toFormGroup({ localize: true }, {
-    //value: flags?.tint,  // This won't set the correct value from renderRegionConfig hook 
+  const legend = document.createElement('legend');
+  legend.innerText = _loc(`${MOD.id}.name`);
+
+  const src = fields.src.toFormGroup({ localize: true }, {
+    value: flags.src,
     localize: true,
   });
-  if (flags?.tint) tint_group.querySelector('color-picker')?._setValue(flags?.tint)
-  group.append(tint_group);
-
-  group.append(fields.size.toFormGroup({ localize: true }, {
-    value: flags?.size,
+  const tint = fields.tint.toFormGroup({ localize: true }, {
+    value: flags.tint,
     localize: true,
-  }));
+  });
+  const size = fields.size.toFormGroup({ localize: true }, {
+    value: flags.size,
+    localize: true,
+  });
+
+  const group = document.createElement("fieldset");
+  group.id = MOD.id;
+  group.append(legend, src, tint, size);
 
   let section = html.querySelector('section.region-shapes');
   section.append(group);
 }
 
 
-async function icon_refreshRegion (region, options) {
+async function icon_refreshRegion(region, options) {
 
   if (!options.refreshState) return;
 
@@ -112,7 +116,7 @@ async function icon_refreshRegion (region, options) {
 
 async function icon_updateRegion(document, changed, options, userId) {
 
-  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: `, { document, changed, options, userId} )
+  if (CONFIG.debug[MOD.id]) console.debug(`${MOD.title} | updateRegion: `, { document, changed, options, userId })
   const region = document.object;
 
   const regionFlags = document.flags[MOD.id];
@@ -160,6 +164,7 @@ async function icon_updateRegion(document, changed, options, userId) {
     let iconCount = 0;
     for (const node of region.document.polygonTree) {
       const icon = region.icons.children[iconCount++];
+      if (!icon) continue;
       if (update_tint) icon.tint = iconTint;
       if (update_size || update_border) {
         if (update_size)
