@@ -48,10 +48,14 @@ function iconField() {
 }
 
 function icon_renderRegionConfig(doc, html) {
+  // Don't add more than once!
+  const existing = html.querySelector(`fieldset#${MOD.id}`);
+  if (existing) return;
   // Create the FormGroup to add to the form (specific)
   const flags = doc.document.flags[MOD.id];
   const fields = iconField().fields;
   const group = document.createElement("fieldset");
+  group.id = MOD.id;
   group.append(fields.src.toFormGroup({ localize: true }, {
     value: flags?.src,
     localize: true,
