@@ -50,10 +50,12 @@ function iconField() {
 }
 
 function icon_renderRegionConfig(doc, html) {
+  // Don't add more than once!
+  const existing = html.querySelector(`fieldset#${MOD.id}`);
+  if (existing) return;
   // Create the FormGroup to add to the form (specific)
   const flags = doc.document.flags[MOD.id] ?? iconField().getInitialValue();
   const fields = iconField().fields;
-  
   const legend = document.createElement('legend');
   legend.innerText = _loc(`${MOD.id}.name`);
 
@@ -71,6 +73,7 @@ function icon_renderRegionConfig(doc, html) {
   });
 
   const group = document.createElement("fieldset");
+  group.id = MOD.id;
   group.append(legend, src, tint, size);
 
   let section = html.querySelector('section.region-shapes');
