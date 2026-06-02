@@ -17,7 +17,8 @@ const REGION_DATALIST_NAME = "region-uuids";
 const SPACING = " \u{21D2} ";   // UNICODE: "Rightwards Double Arrow" (Arrows block)
 
 function my_HTMLDocumentTagsElement_buildElements(wrapper) {
-  const result = wrapper();
+  const result = wrapper();  // returns Array[tags, input, button]
+  const [ptags, pinput, pbutton] = result;
 
   const custom = game.settings.get(MOD.id, SETTING_CUSTOM_DROPDOWN);
 
@@ -67,41 +68,35 @@ function my_HTMLDocumentTagsElement_buildElements(wrapper) {
   }
 
   if (datalist) {
-    let index;
-    for (index = 0; index < result.length && result[index].nodeName !== 'INPUT'; index++);
-    if (index === result.length) {
-      console.error(`${MOD} | Failed to find 'input' element from HTMLDocumentTagsElement._buildElements`)
-      return;
-    }
-
     // Hide the default input field
-    const originput = result[index];
-    if (custom) originput.hidden = true;
+    if (custom) pinput.hidden = true;
 
     datalist.id = REGION_DATALIST_NAME;
 
     // Use our own input field
     const myinput = document.createElement('input');
-    myinput.type = originput.type;
-    myinput.placeholder = originput.placeholder;
+    myinput.type = pinput.type;
+    myinput.placeholder = pinput.placeholder;
     myinput.setAttribute("list", REGION_DATALIST_NAME);
 
     if (custom) {
       myinput.addEventListener("input", (ev) => {
         // For direct input, such as pasting a UUID into the field.
-        originput.value = myinput.value;
+        pinput.value = myinput.value;
         // Now check for one of the options being selected.
         for (const option of datalist.options) {
           if (option.value === myinput.value) {
-            originput.value = option.dataset.value;
+            pinput.value = option.dataset.value;
             break;
           }
         }
+        myinput.value = "";
+        pbutton.click();
       })
-      result.splice(index, 0, myinput, datalist);
+      result.splice(1, 0, myinput, datalist);  // place new input next to old input
     } else {
-      originput.append(datalist);
-      originput.setAttribute("list", REGION_DATALIST_NAME);
+      pinput.append(datalist);
+      pinput.setAttribute("list", REGION_DATALIST_NAME);
     }
   }
 

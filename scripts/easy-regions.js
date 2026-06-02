@@ -21,7 +21,6 @@ import { initRegionUUIDField } from './region-uuids.js';
 import { initRegionLinkTeleport } from './region-link-teleport.js';
 import { initRegionIcons } from './region-icons.js';
 import { initRegionPanel } from './region-panel.js';
-import { initTeleportPrompt } from './region-teleport-prompt.js';
 //import { initClickEvents } from './region-click.js';
 
 
@@ -193,7 +192,7 @@ function init_settings() {
 
   console.log(`${MOD.title} | Game Settings Registered`);
 
-  if (game.settings.get(MOD.id, SETTING_TELEPORT_PROMPT)) initTeleportPrompt();
+  fixTeleportPrompt();
 
   console.groupEnd();
 }
@@ -215,3 +214,23 @@ function init_canvas() {
 Hooks.on("init", init_settings);
 // Needs to be canvasInit for initClickEvents to work on first scene
 Hooks.once('canvasInit', init_canvas);
+
+/**
+ * Provide migration of our old (pre-14) Teleport Prompt fields to the new core Foundry Prompt fields.
+ */
+
+function fixTeleportPrompt() {
+  libWrapper.register(MOD.id, 'foundry.data.regionBehaviors.TeleportTokenRegionBehaviorType.migrateData',
+    (wrapper, data) => {
+      if (data.confirmPrompt && !data.dialog?.revealed) {
+        if (!data.dialog) data.dialog = {};
+        data.dialog.revealed = data.confirmPrompt;
+      }
+      if (data.confirmPromptGM && !data.dialog?.unrevealed) {
+        if (!data.dialog) data.dialog = {};
+        data.dialog.unrevealed = data.confirmPromptGM;
+      }
+      return wrapper(data);
+    },
+    libWrapper.WRAPPER)
+}
