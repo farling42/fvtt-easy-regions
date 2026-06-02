@@ -9,7 +9,6 @@ export const SETTING_TELEPORT_AUTOLINK = "autoLinkTeleport";
 export const SETTING_TELEPORT_PATTERN1 = "teleportPattern1";
 export const SETTING_TELEPORT_PATTERN2 = "teleportPattern2";
 export const SETTING_TELEPORT_SAME_NAME = "teleportSameName";
-export const SETTING_TELEPORT_PROMPT = "teleportPrompt";
 export const SETTING_TRIGGER_ON_CLICK = "triggerOnClick";
 export const SETTING_CLICK_LEFT1  = "triggerClickLeft1";
 export const SETTING_CLICK_LEFT2  = "triggerClickLeft2";
@@ -118,16 +117,6 @@ function init_settings() {
     type: String,
     default: "$1 down to $2",
     config: true
-  });
-
-  game.settings.register(MOD.id, SETTING_TELEPORT_PROMPT, {
-    name: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PROMPT}.Name`),
-    hint: game.i18n.localize(`${MOD.id}.${SETTING_TELEPORT_PROMPT}.Hint`),
-    scope: "world",
-    type: Boolean,
-    default: true,
-    config: true,
-    requiresReload: true
   });
 
 /*
