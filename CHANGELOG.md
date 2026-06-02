@@ -2,6 +2,7 @@
 
 ## NEXT
 - Remove module setting to enable Teleport Prompts (since that code was removed in 14.363).
+- Migrate the module setting 'destination' (originally from core Foundry V13) if the 'destinations' field of core Foundry V14 is empty.
 
 ## 2.1.0 - Foundry 14.363 compatibility
 - Modify UUID field handling to support adding multiple tags.

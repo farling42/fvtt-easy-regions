@@ -219,6 +219,11 @@ function fixTeleportPrompt() {
         if (!data.dialog) data.dialog = {};
         data.dialog.unrevealed = data.confirmPromptGM;
       }
+      if (typeof data.destination === 'string' && data.destination.length && !data.destinations?.length) {
+        // Ensure any existing destination is migrated to the new Foundry V14 destinations field.
+        data.destinations = [data.destinations];
+        delete data.destination;
+      }
       return wrapper(data);
     },
     libWrapper.WRAPPER)
