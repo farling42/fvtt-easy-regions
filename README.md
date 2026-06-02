@@ -55,7 +55,7 @@ There is a module option to use custom handling for the datalist since Chromium-
 
 There is a module option to disable icons if they are not required.
 
-## Custom Message for Teleport Token
+## Custom Message for Teleport Token (not V14+, since core Provides this function)
 
 - Custom strings can be specified (separately for player and GMs) when using the "confirm" checkbox on Teleport Token region behaviors. Just like the base message strings, you can use the tags `{token}`, `{region}`, `{scene}`, `{behavior}` within your message to get the name of the corresponding object.
 
