@@ -1,10 +1,16 @@
 # CHANGELOG
 
-## 1.1.0 - Foundry 14.363 compatibility
+## 2.1.0 - Foundry 14.363 compatibility
 - Modify UUID field handling to support adding multiple tags.
 - Remove our own Teleport Prompt capability, since core Foundry now provides it.
   - The old "Player Prompt" text is moved to the new core "Revealed Prompt".
   - The old "GM Prompt" text is moved to the new core "Unrevealed Prompt".
+
+## 2.0.2
+- Prevent duplication of data in icon fields when making other changes in the Region dialog
+
+## 2.0.1
+- Fix default localization strings for teleport
 
 ## 1.0.3
 - Prevent duplicate entries in the ICON fields of the Region dialog.
