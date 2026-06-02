@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## NEXT
+- Remove module setting to enable Teleport Prompts (since that code was removed in 14.363).
+
 ## 2.1.0 - Foundry 14.363 compatibility
 - Modify UUID field handling to support adding multiple tags.
 - Remove our own Teleport Prompt capability, since core Foundry now provides it.
