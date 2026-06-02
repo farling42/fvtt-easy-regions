@@ -221,7 +221,7 @@ function fixTeleportPrompt() {
       }
       if (typeof data.destination === 'string' && data.destination.length && !data.destinations?.length) {
         // Ensure any existing destination is migrated to the new Foundry V14 destinations field.
-        data.destinations = [data.destinations];
+        data.destinations = [data.destination];
         delete data.destination;
       }
       return wrapper(data);
